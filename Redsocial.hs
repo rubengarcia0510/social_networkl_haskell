@@ -34,7 +34,9 @@ likesDePublicacion (_, _, us) = us
 
 -- Dada una red social retorna un conjunto con los nombres de todos los usuarios.
 nombresDeUsuarios :: RedSocial -> Set String
-nombresDeUsuarios = undefined
+nombresDeUsuarios ([],p,r) = []
+nombresDeUsuarios (((id,nombre):uq),p,r) = (nombre:nombresDeUsuarios (uq,p,r))
+
 
 -- Dada una red social y un usuario retorna el conjunto de amigos del mismo
 amigosDe :: RedSocial -> Usuario -> Set Usuario
