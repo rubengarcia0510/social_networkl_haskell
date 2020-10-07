@@ -52,7 +52,9 @@ cantidadDeAmigos red user = length (amigosDe red user)
 
 -- Dada una red social retorna el usuario con mas amigos. De existir más de uno devuelve cualquiera de ellos.
 usuarioConMasAmigos :: RedSocial -> Usuario
-usuarioConMasAmigos = undefined
+usuarioConMasAmigos ((u:[]),_,_) = u
+usuarioConMasAmigos ((u:uq),r,p) | (cantidadDeAmigos ((u:uq),r,p) u) >= (cantidadDeAmigos ((u:uq),r,p) (head uq)) = usuarioConMasAmigos ((u:(tail uq)),r,p)
+                                 | otherwise = usuarioConMasAmigos (uq,r,p)
 
 -- Dada una red social retorna True si algún usuario tiene más de un millón de amigos
 estaRobertoCarlos :: RedSocial -> Bool
