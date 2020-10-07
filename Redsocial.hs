@@ -48,7 +48,7 @@ amigosDe ((u:uq),((u1,u2):rq),p) ui | u == ui && ui == u1 = (u2:amigosDe ((u:uq)
 
 -- Dada una red social y un usuario retorna la cantidad de amigos de dicho usuario
 cantidadDeAmigos :: RedSocial -> Usuario -> Int
-cantidadDeAmigos = undefined
+cantidadDeAmigos red user = length (amigosDe red user)
 
 -- Dada una red social retorna el usuario con mas amigos. De existir más de uno devuelve cualquiera de ellos.
 usuarioConMasAmigos :: RedSocial -> Usuario
