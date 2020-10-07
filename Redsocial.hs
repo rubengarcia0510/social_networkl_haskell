@@ -40,7 +40,9 @@ nombresDeUsuarios (((id,nombre):uq),p,r) = (nombre:nombresDeUsuarios (uq,p,r))
 
 -- Dada una red social y un usuario retorna el conjunto de amigos del mismo
 amigosDe :: RedSocial -> Usuario -> Set Usuario
-amigosDe = undefined
+amigosDe ([],r,p) ui = []
+amigosDe ((u:uq),((u1,u2):rq),p) ui | u == ui = (u2:amigosDe ((u:uq),rq,p) ui)
+                              | otherwise = amigosDe (uq,((u1,u2):rq),p) ui
 
 -- Dada una red social y un usuario retorna la cantidad de amigos de dicho usuario
 cantidadDeAmigos :: RedSocial -> Usuario -> Int
