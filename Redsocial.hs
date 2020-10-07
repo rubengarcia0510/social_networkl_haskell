@@ -58,7 +58,9 @@ usuarioConMasAmigos ((u:uq),r,p) | (cantidadDeAmigos ((u:uq),r,p) u) >= (cantida
 
 -- Dada una red social retorna True si algún usuario tiene más de un millón de amigos
 estaRobertoCarlos :: RedSocial -> Bool
-estaRobertoCarlos = undefined
+estaRobertoCarlos ([],_,_) = False
+estaRobertoCarlos ((u:uq),r,p) | (cantidadDeAmigos ((u:uq),r,p) u) /= 1000000 = estaRobertoCarlos (uq,r,p)
+                               | otherwise = True
 
 -- Dada una red social y un usuario retorna el conjunto de publicaciones del mismo.
 publicacionesDe :: RedSocial -> Usuario -> Set Publicacion
